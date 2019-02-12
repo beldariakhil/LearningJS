@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    #pass_error{
+        color:red; 
+        font-family: Arial, Helvetica, sans-serif; 
+        margin-bottom:10px;
+    }
+    
+    </style>
+</head>
+
+<body>
+    
+<form method="POST" action="http://www.w3schools.com" name="password" onsubmit="validation() ; return false">
+    <span style="text-align:center;">Enter Password</span>
+    <input type="password" id="pass" name="pswd" autofocus /></br></br>
+    <div id="pass_error" class=password_err style="visibility: hidden;">
+        
+            <p id="empty"> Password should not be empty </p>
+            <p id="cl"> Enter Password which contains a Capital letter</p>
+            <p id="sl"> Enter Password which contains a Small letter</p>
+            <p id="num"> Enter Password which contains a Number </p>
+            <p id="sc"> Enter Password which contains a Special Character </p>
+            <p id="len"> Enter Password which contains Minimum of 6 Characters </p>
+
+    </div>
+    <button type="submit" id="btn" >Submit</button>
+
+</form>
+<script type="text/javascript">
+
+var pass = document.password.pswd;
+var empty = document.getElementById("empty");
+var len = document.getElementById("len");
+var cl = document.getElementById("cl");
+var sl = document.getElementById("sl");
+var num = document.getElementById("num");
+var sc = document.getElementById("sc");
+
+function Empty()
+{
+    if( pass.value.trim() == ""){
+        //alert('Password feild should not be empty');
+        pass.style.border = "1px solid red";
+        document.getElementById("empty").style.visibility=" visible";
+        document.getElementById("empty").style.color = "red";
+        pass.focus();
+        return false;
+    }
+    else
+    {
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("empty").style.visibility=" hidden";
+        pass.focus();
+    }
+}
+function Cap()
+{
+    if ( pass.value.search(/[A-Z]/) == -1) {
+        //alert('Password is not have a capital characters');
+        pass.style.border = "1px solid red";
+        document.getElementById("cl").style.visibility=" visible";
+        document.getElementById("cl").style.color = "red";
+        pass.focus();
+        return false;
+    }
+    else{
+        
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("cl").innerHTML="Password contains a Capital letter ";
+        document.getElementById("cl").style.color = "green";
+        pass.focus();
+    }
+    
+
+}
+
+function Small()
+{
+    if ( pass.value.search(/[a-z]/) == -1) {
+        //alert('Password is not have a small characters');
+        pass.style.border = "1px solid red";
+        document.getElementById("sl").style.visibility=" visible";
+        document.getElementById("sl").style.color = "red";
+        pass.focus();
+        return false;
+    } 
+    else {
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("sl").innerHTML="Password contains a Small letter ";
+        document.getElementById("sl").style.color = "green";
+        pass.focus();
+    }
+    
+}
+
+function Num()
+{
+    if (pass.value.search(/[0-9]/) == -1) {
+                
+        //alert('Password is not having a number');
+        pass.style.border = "1px solid red";
+        document.getElementById("num").style.visibility=" visible";
+        document.getElementById("num").style.color = "red";
+        pass.focus();
+        return false;
+    }
+    else {
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("num").innerHTML="Password contains a Digit ";
+        document.getElementById("num").style.color = "green";
+        pass.focus();
+    }
+    
+}
+
+function Len()
+{
+    if ( pass.value.length < 6) {
+        //alert('Password is too short');
+        pass.style.border = "1px solid red";
+        document.getElementById("len").style.visibility=" visible";
+        document.getElementById("len").style.color = "red";
+        pass.focus();
+        return false;
+    } 
+
+    else {
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("len").innerHTML="Password contains Minimum of 6 Characters ";
+        document.getElementById("len").style.color = "green";
+        pass.focus();
+    }
+}
+
+function Sc()
+{
+    if ( pass.value.search(/[\[\]!@#$%^&*)(_+}{:"|><?\.,`~';\/\\]/) == -1) {
+        // alert('Password is no special character in the password');
+        pass.style.border = "1px solid red";
+        document.getElementById("sc").style.visibility=" visible";
+        document.getElementById("sc").style.color = "red";
+        pass.focus();
+        return false;
+    }
+    else {
+        pass.style.border = "1px solid #ccc";
+        document.getElementById("sc").innerHTML=" Password contains a Special Character";
+        document.getElementById("sc").style.color = "green";
+        pass.focus();
+    }
+}
+
+function validation(e)
+{
+    if(true)
+    {
+        Empty();
+        Cap();
+        Small();
+        Num();
+        Len();
+        Sc();
+        
+    }
+    else{
+        return true;
+    }
+    // window.location.href = "http://www.w3schools.com";
+}
+
+    </script>
+</body>
+</html>
